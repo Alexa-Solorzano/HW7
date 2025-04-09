@@ -40,9 +40,11 @@ public class ProblemSolutions {
      *       if(a[j] < a[min]) //If another index is smaller than the current min 
      *          min = j; //Update the min variable to the actual min 
      *       if(min != i) //If there was another min found 
-     *          swap a[min] and a[j] //swap with the correct value 
+     *          swap a[min] and a[j] //Swap with the correct value 
      *
-     * The difference between 
+     * This pseudocode assumes ascending order 
+     * The difference between this pseudocode and selectionSort is that we have to account for being controlled by boolean ascending (which can either be TRUE--which will make it ascending sort OR FALSE--which would result in descending sort
+     * The new code has to be able to dynamically change between both ascending and descending 
      */
     public static void selectionSort(int[] values, boolean ascending ) {
 
