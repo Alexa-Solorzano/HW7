@@ -45,6 +45,26 @@ public class ProblemSolutions {
      * This pseudocode assumes ascending order 
      * The difference between this pseudocode and selectionSort is that we have to account for being controlled by boolean ascending (which can either be TRUE--which will make it ascending sort OR FALSE--which would result in descending sort
      * The new code has to be able to dynamically change between both ascending and descending 
+     * 
+     * New pseudocode:
+     * Get array length 
+     * Go through array length 
+     * Instead of initializing a variable that reflects the min index, we need a variable that can either reflect the min (ascending sort) OR the max (descending sort)
+     * Iterate over the rest of the unsorted array to find the actual largest/smallest value placed at index i
+     * if(we are sorting in ascending order)
+     *    compare the values of the current value at the current index (in the loop) with the smallest value found so far, 
+     *        if the current value is smaller than the variable that reflects the min, update the new min 
+     * else, that means that we are going to sort in descending order 
+     *    compare the values of the current value at the current index (in the loop) with the largest value found so far, 
+     *        if the current value is larger than the variable that reflects the max, update the new max 
+     *
+     * Now the psuedocode from our class notes and selectionSort become similar, we have to swap with the correct value
+     * We have to move the correct smallest/largest value into the proper place in the array
+     * If the min/max value found is not equal to i
+     * then, we store the current value at position i in a temporary variable
+     * Replace the value at position i with the value of the min/max variable
+     * Put the original value from the temp variable into the min/max position 
+     * //now it is swapped into the correct position 
      */
     public static void selectionSort(int[] values, boolean ascending ) {
 
