@@ -111,25 +111,34 @@ public class ProblemSolutions {
      *
      * @param values    - input array to sort per definition above
      * @param k         - value k, such that all numbers divisible by this value are first
+     *
+     * The usual implementation of merge sort has 3 steps (referring to class notes):
+     * Divide: divide the input data S in two disjoint subsets S1 and S2
+     * Recur: solve the subproblems associated with S1 and S
+     * Conquer: combine the solutions for S1 and S2 into a solution for S
+     * 
+     * 
      */
 
     public void mergeSortDivisibleByKFirst(int[] values, int k) {
 
         // Protect against bad input values
-        if (k == 0)  return;
-        if (values.length <= 1)  return;
+        if (k == 0)  return; //One cannot divide by 0 because it will result in a "undefined"
+        if (values.length <= 1)  return; //No sorting needed for empty or arrays with only one element in it
 
-        mergeSortDivisibleByKFirst(values, k, 0, values.length-1);
+        mergeSortDivisibleByKFirst(values, k, 0, values.length-1); //Recursive merge sort
     }
 
     private void mergeSortDivisibleByKFirst(int[] values, int k, int left, int right) {
-
-        if (left >= right)
+        //If there is one or no elements in the current portion, then return because there is nothing to sort
+        if (left >= right) 
             return;
 
-        int mid = left + (right - left) / 2;
+        int mid = left + (right - left) / 2; //Split the array into two halves--1st step
+        //2nd step: Recur--sort both halves 
         mergeSortDivisibleByKFirst(values, k, left, mid);
         mergeSortDivisibleByKFirst(values, k, mid + 1, right);
+        //3rd step: Conquer--combine the solutions
         mergeDivisbleByKFirst(values, k, left, mid, right);
     }
 
