@@ -139,7 +139,7 @@ public class ProblemSolutions {
         mergeSortDivisibleByKFirst(values, k, left, mid);
         mergeSortDivisibleByKFirst(values, k, mid + 1, right);
         //3rd step: Conquer--combine the solutions
-        mergeDivisbleByKFirst(values, k, left, mid, right);
+        mergeDivisibleByKFirst(values, k, left, mid, right);
     }
 
     /*
