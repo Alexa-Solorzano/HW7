@@ -34,13 +34,15 @@ public class ProblemSolutions {
     /**
      * Selection sort works by repeatedly selecting the smallest (or largest) element from the unsorted portion of the list & moving it to the sorted portion of the list
      * Pseudocode from notes: 1) looks through the unsorted part of the array 2) finds the smallest value 3) swap it with the value of the current position
-     * for(int = 0 to a.length-1)
-     *    min = i;
-     *    for(j = i+1 to a.length-1)
-     *       if(a[j] < a[min])
-     *          min = j;
-     *       if(min != i)
-     *          swap a[min] and a[j]
+     * for(int = 0 to a.length-1) //Goes through every index in the array 
+     *    min = i; //Assumes that the first index is the smallest
+     *    for(j = i+1 to a.length-1) //Look through the rest of the array ---> this is where we find the real min index
+     *       if(a[j] < a[min]) //If another index is smaller than the current min 
+     *          min = j; //Update the min variable to the actual min 
+     *       if(min != i) //If there was another min found 
+     *          swap a[min] and a[j] //swap with the correct value 
+     *
+     * The difference between 
      */
     public static void selectionSort(int[] values, boolean ascending ) {
 
