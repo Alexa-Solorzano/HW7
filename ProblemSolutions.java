@@ -173,20 +173,48 @@ public class ProblemSolutions {
      * The merging portion of the merge sort, divisible by k first
      */
 
-    private void mergeDivisbleByKFirst(int arr[], int k, int left, int mid, int right)
-    {
-        // YOUR CODE GOES HERE, THIS METHOD IS NO MORE THAN THE STANDARD MERGE PORTION
-        // OF A MERGESORT, EXCEPT THE NUMBERS DIVISIBLE BY K MUST GO FIRST WITHIN THE
-        // SEQUENCE PER THE DISCUSSION IN THE PROLOGUE ABOVE.
-        //
-        // NOTE: YOU CAN PROGRAM THIS WITH A SPACE COMPLEXITY OF O(1) OR O(N LOG N).
-        // AGAIN, THIS IS REFERRING TO SPACE COMPLEXITY. O(1) IS IN-PLACE, O(N LOG N)
-        // ALLOCATES AUXILIARY DATA STRUCTURES (TEMPORARY ARRAYS). IT WILL BE EASIER
-        // TO CODE WITH A SPACE COMPLEXITY OF O(N LOG N), WHICH IS FINE FOR PURPOSES
-        // OF THIS PROGRAMMING EXERCISES.
+    private void mergeDivisibleByKFirst(int arr[], int k, int left, int mid, int right){
+        int leftPointer = left;
+        int rightPointer = mid + 1;
+        int kIndex = left;
+        //Temporary array to store merged results
+        int[] merged = new int[right - left + 1];
+        int mergedIndex = 0;
 
-        return;
+        //Merge elements into the merged array with priority to values divisible by k
+        while(leftPointer <= mid && rightPointer <= right){
+            if(arr[leftPointer] % k == 0 && arr[rightPointer] % k != 0){
+                merged[mergedIndex++] = arr[leftPointer++];
+            } else if(arr[rightPointer] % k == 0 && arr[leftPointer] % k != 0){
+                merged[mergedIndex++] = arr[rightPointer++];
+            } else if(arr[leftPointer] % k == 0){
+                merged[mergedIndex++] = arr[leftPointer++];
+            } else if(arr[rightPointer] % k == 0){
+                merged[mergedIndex++] = arr[rightPointer++];
+            } else {
+                //Regular comparison if neither
+                if(arr[leftPointer] <= arr[rightPointer]){
+                    merged[mergedIndex++] = arr[leftPointer++];
+                } else {
+                    merged[mergedIndex++] = arr[rightPointer++];
+                }
+            }
+        }
 
+        //Copy any remaining elements from the left side
+        while(leftPointer <= mid){
+            merged[mergedIndex++] = arr[leftPointer++];
+        }
+
+        //Copy any remaining elements from the left side
+        while(rightPointer <= right){
+            merged[mergedIndex++] = arr[rightPointer++];
+        }
+
+        //Copy the merged temp array back into the original array
+        for(int z = 0; z < merged.length; z++){
+            arr[kIndex + z] = merged[z];
+        }
     }
 
 
