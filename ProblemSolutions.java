@@ -278,11 +278,17 @@ public class ProblemSolutions {
      */
 
     public static boolean asteroidsDestroyed(int mass, int[] asteroids) {
-
-        // YOUR CODE GOES HERE, CONSIDER USING ARRAYS.SORT()
-
-        return false;
-
+        Arrays.sort(asteroids); //Sorts the asteroids array in ascending order
+        //Iterate over the sorted asteroids
+        for(int i = 0; i < asteroids.length; i++){
+            if(mass < asteroids[i]){ //If the planet's mass is less than the asteroids mass = planet destroyed
+                return false; //Planet cannot destroy & gain the asteroid's mass
+            }
+            //Planet destorys the asteroid and gains its mass
+            mass += asteroids[i];
+        }
+        //If all asteroids are destroyed, then return true 
+        return true;
     }
 
 
