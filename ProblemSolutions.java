@@ -283,7 +283,7 @@ public class ProblemSolutions {
      *
      * Example 1:
      *    Input: people = [1,2], limit = 3
-     *    Output: 1
+     *    Output: 1 
      *    Explanation: 1 sled (1, 2)
      *
      * Example 2:
@@ -299,7 +299,31 @@ public class ProblemSolutions {
      * @param people    - an array of weights for people that need to go in a sled
      * @param limit     - the weight limit per sled
      * @return          - the minimum number of rescue sleds required to hold all people
+     *
+     * In all of these examples, the common consensus is that the lightest person is usually paired with the lightest person. If the heaviest person is equal to or over the limit then we leave the heaviest person with their own slide and move on
+     * Using this logic, it makes sense that the array should be sorted to allow pairing of the lightest and heaviest people
+     * To keep track of this, there should be two pointers to keep track of the pairings
+     * It is also important to keep track of the number of sleds used, whether the sled is used in a pair or single
+     * By ordering the people in ascending order, we have a clear line of lightest to heaviest
+     * The first pointer should start with the lightest person which would be at the leftmost place of the array. Meanwhile the second pointer should point to the heaviest person which is the rightmost place in the array
+     * We only stop the sortin once every person is assigned a sled
+     *
+     * Per the hint, using Arrays.sort() (which thanks to oracle we know: sort(int[] a)--Sorts the specified array into ascending numerical order.) will help cut our work in half
+     * Pseudocode: 
+     * Sort the array in ascending order using Arrays.sort
+     * Initialize left pointer which represents the lightest person
+     * Initialize right pointer which represents the heaviest person
+     * Initialize sled tracker which tracks the minimum number of sleds needed
+     * 
+     * while there are still people left to process
+     *    if the lightest and heaviest person can be paired
+     *        pair the lightest person with the heaviest
+     *    after processing the person at the right pointer, need to decrement right pointer because this person has been assigned to a sled, wether solo or paired
+     *    increase the sled count
+     *
+     * return sled count
      */
+    
 
     public static int numRescueSleds(int[] people, int limit) {
 
