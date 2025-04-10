@@ -225,7 +225,8 @@ public class ProblemSolutions {
      * You are further given an integer array 'asteroids', where asteroids[i] is the mass
      * of the ith asteroid.
      *
-     * You can arrange for the planet to collide with the asteroids in any arbitrary order.
+     * You can arrange for the planet to collide with the asteroids in any arbitrary order. 
+     * --> The order in which the planet collides with asteroids is not fixed = WE NEED TO OPTIMIZE THE PLANETS CHANCE OF SURVIVAL BY ARTFULLY CHOOSING THE ORDER OF COLLISIONS
      * If the mass of the planet is greater than or equal to the mass of the asteroid, the
      * asteroid is destroyed and the planet gains the mass of the asteroid. Otherwise, the
      * planet is destroyed.
@@ -261,6 +262,19 @@ public class ProblemSolutions {
      * @param mass          - integer value representing the mass of the planet
      * @param asteroids     - integer array of the mass of asteroids
      * @return              - return true if all asteroids destroyed, else false.
+     *
+     * Some of the constraints given is that...
+     * 1) The planets mass has to be greater than or equal to 1 and has to be less than or equal to 105
+     * 2) The length of the asteroid array has to be greater than or equal to 1 and has to be less than or equal to 105
+     * 3) Each asteroids mass must be greater than or equal to 1 and has to be less than or equal to 105
+     *
+     * The best way to optimize a planets survival is by ordering the planet to collide with the smallest asteroids so that the planet can continue to gain mass and stand a better chance against the bigger asteroids
+     * Just like the method numRescueSleds(), we can use Arrays.sort() in order to sort the asteroid array in ascending order (leaving the lightest asteroids in the front)
+     * After organizing the asteroid array, 
+     * We must check if the current mass of the planet is greater than or qual to the mass of the asteroid 
+     * If yes (the planet is heavier than the asteroid) then the planet destorys the asteroid and GAINS its mass
+     * Otherwise, the asteroid's mass is bigger and it destroys the planet --> return false
+     * If the planet destroys as the asteroids --> return true
      */
 
     public static boolean asteroidsDestroyed(int mass, int[] asteroids) {
