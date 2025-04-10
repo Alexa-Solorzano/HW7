@@ -326,11 +326,21 @@ public class ProblemSolutions {
     
 
     public static int numRescueSleds(int[] people, int limit) {
+        Arrays.sort(people);
 
-        // YOUR CODE GOES HERE, CONSIDER USING ARRAYS.SORT
+        int leftPointer = 0; 
+        int rightPointer = people.length - 1;
+        int sleds = 0;
 
-        return -1;
-
+        while(leftPointer <= rightPointer){
+            if(people[leftPointer] + people[rightPointer] <= limit){ //If the weight of the lightest person plus the heaviest person is less than or equal to the limit
+                leftPointer++; //Moves the left pointer one step to the right so the next lightest person can be considered
+            }
+            rightPointer--; //Moves the right pointer to consider the next heaviest person in the next iteration
+            sleds++; //Keep track of the number of sleds
+        }
+        
+        return sleds;
     }
 
 } // End Class ProblemSolutions
