@@ -127,6 +127,24 @@ public class ProblemSolutions {
      * Initialize a right pointer for the subarray
      * Initialize a temporary array to store the merged results 
      * Initialize a tracker of the current index in the merged temporary array
+     * //There are many situations to be accounted for while sorting the array
+     * While(both subarrays have elements)
+     * compare the current values from both halves of the array & deciding which one to move into the merged array based on whether it is dividible by k
+     *     If(first case is that the left value is divisible by k while right is not)
+     *        add the value onto the merged array and move the left pointer forward
+     *       else if(second case is that the right value is divisible by k while left is not)
+     *        add the value onto the merged array and move the right pointer forward
+     *       else if(third case is that both values are divisible by k)
+     *        this allows to go back to regular sorting where we focus on taking the smaller value --> add smaller value to the merged array and move the left pointer
+     *       else if(fourth case is that neither value is divisible by k)
+     *         so also go back to regular sorting where the smaller value is chosen 
+     *
+     * After this main loop, we have to protect against any remaining elements from the both the subarrays,
+     *
+     * Copy any remaining elements from the left subarray into merged array
+     * Copy any remaining elements from the right subarray into merged array
+     * At this point, the merged array correctly contains the sorted array & we can place back into the original array
+     * Copy all elements from merged back into the original array starting at the leftmost index 
      */
 
     public void mergeSortDivisibleByKFirst(int[] values, int k) {
