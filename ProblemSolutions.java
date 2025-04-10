@@ -117,7 +117,16 @@ public class ProblemSolutions {
      * Recur: solve the subproblems associated with S1 and S
      * Conquer: combine the solutions for S1 and S2 into a solution for S
      * 
-     * 
+     * The way mergeSortDivisibleByKFirst is different from a regular merge is that there is an added step
+     * You first have to sort whether the number is divisible by k so that they can be sorted in the beginning 
+     * Then sort in ascending order if it is not divisible 
+     *
+     * Since there are a lot of things to keep track of, it is important to initialize all the pointers 
+     * Pseudocode:
+     * Initialize a left pointer for the subarray
+     * Initialize a right pointer for the subarray
+     * Initialize a temporary array to store the merged results 
+     * Initialize a tracker of the current index in the merged temporary array
      */
 
     public void mergeSortDivisibleByKFirst(int[] values, int k) {
